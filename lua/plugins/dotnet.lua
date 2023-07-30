@@ -1,0 +1,3 @@
+return {
+    { 'heaths/vim-msbuild' },
+}
