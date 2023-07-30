@@ -39,3 +39,5 @@ vim.o.list = true
 
 vim.o.cursorline = true
 vim.o.breakindent = true
+
+vim.o.guifont = 'CaskaydiaCove Nerd Font Mono:h9'
