@@ -37,6 +37,7 @@ local function config_telescope()
             },
             live_grep_args = {
                 auto_quoting = false,
+                layout_strategy = 'vertical',
             },
         }
     }
@@ -51,7 +52,7 @@ local function config_telescope()
     nmap('<leader>fh', 'help_tags', '[F]ind [H]elp')
 
     -- grep
-    nmap('<leader>fw', 'grep_string', '[F]ind [W]ord')
+    -- nmap('<leader>fw', 'grep_string', '[F]ind [W]ord') => moved to live grep args
     nmap('<leader>/', 'current_buffer_fuzzy_find', '[/] fuzzy search')
 
     nmap('<leader>gb', 'git_branches',  '[G]it [B]ranches')
@@ -60,6 +61,7 @@ end
 local function nmap(lhs, telescope_cmd, desc)
     vim.keymap.set('n', lhs, '<cmd>Telescope ' .. telescope_cmd .. '<cr>', { desc = desc })
 end
+
 return {
     {
         'nvim-telescope/telescope.nvim',
@@ -100,6 +102,10 @@ return {
             require('telescope').load_extension('live_grep_args')
 
             nmap('<leader>fg', 'live_grep_args', '[f]ind with [g]rep')
+            vim.keymap.set('n', '<leader>fw',  require("telescope-live-grep-args.shortcuts").grep_word_under_cursor,
+                { desc = '[F]ind [W]ord' })
+            vim.keymap.set('v', '<leader>fw',  require("telescope-live-grep-args.shortcuts").grep_visual_selection,
+                { desc = '[F]ind [W]ord' })
         end
     }
 }
