@@ -24,5 +24,6 @@ return {
                 end,
             },
         },
+        { 'akinsho/git-conflict.nvim', version="v1.0.0", config = true },
     },
 }

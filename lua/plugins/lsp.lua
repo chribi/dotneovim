@@ -1,4 +1,4 @@
-local function on_attach(_, bufnr)
+local function on_attach(client, bufnr)
     vim.diagnostic.config {
         severity_sort = true,
     }
@@ -41,6 +41,12 @@ local function on_attach(_, bufnr)
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    end
+
+    if client.server_capabilities.signatureHelpProvider then
+        vim.api.nvim_buf_set_keymap(0, "n", "<A-s>", ":LspOverloadsSignature<CR>", { noremap = true, silent = true })
+        vim.api.nvim_buf_set_keymap(0, "i", "<A-s>", "<cmd>LspOverloadsSignature<CR>", { noremap = true, silent = true })
+        require('lsp-overloads').setup(client, { })
     end
 end
 
@@ -95,6 +101,7 @@ return {
         {'folke/neodev.nvim', opts = {} },
         'hrsh7th/cmp-nvim-lsp',
         { 'Hoffs/omnisharp-extended-lsp.nvim' },
+        { 'Issafalcon/lsp-overloads.nvim' },
     },
     init = config_lsp
 }

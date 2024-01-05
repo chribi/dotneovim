@@ -29,6 +29,7 @@ vim.o.completeopt = 'menuone,noselect'
 
 vim.o.shell = 'cmd'
 vim.o.fileformats = 'unix,dos'
+vim.o.shellslash = true
 
 vim.opt.listchars = {
     tab = '>·',
@@ -39,5 +40,9 @@ vim.o.list = true
 
 vim.o.cursorline = true
 vim.o.breakindent = true
+
+vim.o.shiftwidth = 4
+vim.o.tabstop = 4
+vim.o.expandtab = true
 
 vim.o.guifont = 'CaskaydiaCove Nerd Font Mono:h9'
