@@ -1,3 +1,13 @@
+local highlight = {
+    'RainbowDelimiterRed',
+    'RainbowDelimiterYellow',
+    'RainbowDelimiterBlue',
+    'RainbowDelimiterOrange',
+    'RainbowDelimiterGreen',
+    'RainbowDelimiterViolet',
+    'RainbowDelimiterCyan',
+}
+
 return {
     -- Auto detect tabstop/shiftwidth
     'tpope/vim-sleuth',
@@ -15,12 +25,15 @@ return {
     {
         -- Add indentation guides even on blank lines
         'lukas-reineke/indent-blankline.nvim',
+        main = 'ibl',
         opts = {
-            char = '┊',
-            show_first_indent_level = false,
-            show_trailing_blankline_indent = false,
-
-        }
+            indent = {
+                char = "┊",
+                highlight = highlight,
+            },
+            scope = { enabled = false },
+        },
+        dependencies = { 'hiphish/rainbow-delimiters.nvim'},
     },
 
     {
@@ -41,15 +54,7 @@ return {
                     [''] = 'rainbow-delimiters',
                     lua = 'rainbow-blocks',
                 },
-                highlight = {
-                    'RainbowDelimiterRed',
-                    'RainbowDelimiterYellow',
-                    'RainbowDelimiterBlue',
-                    'RainbowDelimiterOrange',
-                    'RainbowDelimiterGreen',
-                    'RainbowDelimiterViolet',
-                    'RainbowDelimiterCyan',
-                }
+                highlight = highlight,
             }
         end,
     },

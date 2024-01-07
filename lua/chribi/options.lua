@@ -30,6 +30,7 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.shell = 'cmd'
 vim.o.fileformats = 'unix,dos'
 vim.o.shellslash = true
+vim.o.title = true
 
 vim.opt.listchars = {
     tab = '>·',
