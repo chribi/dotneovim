@@ -18,8 +18,24 @@ local function config_completion()
         mapping = cmp.mapping.preset.insert {
             ['<CR>'] = cmp.mapping.confirm {
                 behavior = cmp.ConfirmBehavior.Replace,
-                select = true,
+                select = false,
             },
+
+            ['<C-K>'] = cmp.mapping(
+                function()
+                    if luasnip.expand_or_locally_jumpable() then
+                        luasnip.expand_or_jump()
+                    else
+                        cmp.complete {
+                            config = { sources = { { name = 'luasnip' } } }
+                        }
+                    end
+                end,
+                { 'i', 's' }
+
+            ),
+
+            ['<C-Q>'] = cmp.mapping.close(),
 
             ['<Tab>'] = cmp.mapping(
                 function(fallback)
@@ -63,10 +79,10 @@ local function config_completion()
             format = require('lspkind').cmp_format {
                 mode = 'symbol_text',
                 menu = {
-                luasnip = '[snp]',
-                nvim_lua = '[lua]',
-                nvim_lsp = '[lsp]',
-                path = '[pth]',
+                    luasnip = '[snp]',
+                    nvim_lua = '[lua]',
+                    nvim_lsp = '[lsp]',
+                    path = '[pth]',
                 },
             },
         },
@@ -91,7 +107,7 @@ return {
         -- snippets
         'L3MON4D3/LuaSnip',
         'saadparwaiz1/cmp_luasnip',
-        'rafamadriz/friendly-snippets',
+        -- 'rafamadriz/friendly-snippets',
         -- icons
         'onsails/lspkind.nvim',
     },

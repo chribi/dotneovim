@@ -24,3 +24,6 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next [D]iagnostic'
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Float diagnostic [e]rror' })
 vim.keymap.set('n', '<leader>dl', vim.diagnostic.open_float, { desc = '[D]iagnostic [L]ist' })
 vim.keymap.set('n', '<leader>df', function() require('telescope.builtin').diagnostics() end, { desc = '[D]iagnostic [F]ind' })
+
+-- snipsnipsnip
+vim.keymap.set('n', '<leader>sne', require('luasnip.loaders').edit_snippet_files, { desc = "edit snippets" })
