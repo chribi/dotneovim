@@ -2,8 +2,21 @@ vim.keymap.set({'n', 'v'}, '<space>', '<nop>', { silent = true })
 
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+-- Join lines without changing cursor pos
+vim.keymap.set('n','J', "mzJ'z");
+
+-- indent/outdent in visual mode with </>
 vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '>', '>gv')
+
+-- move selected lines in visual mode with J/K
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
+
+-- clipboard helper
+vim.keymap.set('v', '<leader>y', '"*y', { desc = "[Y]ank to clipboard" })
+vim.keymap.set({ 'n', 'v' }, '<leader>cy', '<cmd>let @*=@"<cr>', { desc = 'Copy register @" -> @*' })
+vim.keymap.set({ 'n', 'v' }, '<leader>cp', '<cmd>let @"=@*<cr>', { desc = 'Copy register @* -> @"' })
 
 vim.keymap.set('n', '<leader>vp', '`[v`]', { desc = '[v]isual select last [p]aste' })
 
