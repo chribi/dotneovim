@@ -19,6 +19,14 @@ return {
                 vim.keymap.set('n', '<leader>h' .. i, function() require('harpoon.term').sendCommand(1, i) end,
                     { desc = '[H]arpoon Comand [' .. i .. ']' })
             end
+            vim.keymap.set('n', ',f', function() require('harpoon.ui').nav_file(1) end,
+                { desc = 'Harpoon file 1' })
+            vim.keymap.set('n', ',d', function() require('harpoon.ui').nav_file(2) end,
+                { desc = 'Harpoon file 2' })
+            vim.keymap.set('n', ',s', function() require('harpoon.ui').nav_file(3) end,
+                { desc = 'Harpoon file 3' })
+            vim.keymap.set('n', ',a', function() require('harpoon.ui').nav_file(4) end,
+                { desc = 'Harpoon file 4' })
         end,
     },
 }
