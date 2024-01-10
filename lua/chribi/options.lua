@@ -13,6 +13,10 @@ vim.wo.relativenumber = true
 vim.keymap.set('n', '<leader>or', '<cmd>set invrelativenumber<cr>',
     { desc = 'Toggle [r]elativenumber', silent = true })
 
+vim.wo.linebreak = true
+vim.keymap.set('n', '<leader>or', '<cmd>set invlinebreak<cr>',
+    { desc = 'Toggle [l]inebreak', silent = true })
+
 vim.o.colorcolumn = '131'
 vim.keymap.set('n', '<leader>oc', function()
     if vim.o.colorcolumn == '' then

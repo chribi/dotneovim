@@ -34,7 +34,7 @@ vim.keymap.set('n', ']l', '<cmd>cnext<cr>', { desc = 'Next [l]ocation', silent =
 -- diagnostics
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous [D]iagnostic' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next [D]iagnostic' })
-vim.keymap.set('n', '<leader>ds', vim.diagnostic.open_float, { desc = '[D]iagnostic error [S]how' })
+vim.keymap.set('n', '<leader>de', vim.diagnostic.open_float, { desc = '[D]iagnostic [e]rror' })
 vim.keymap.set('n', '<leader>dd', '<cmd>Trouble document_diagnostics<cr>', { desc = '[D]iagnostic error list ([D]ocument)' })
 vim.keymap.set('n', '<leader>da', '<cmd>Trouble document_diagnostics<cr>', { desc = '[D]iagnostic error list ([A]ll)' })
 vim.keymap.set('n', '<leader>df', function() require('telescope.builtin').diagnostics() end, { desc = '[D]iagnostic [F]ind' })

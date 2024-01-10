@@ -51,6 +51,7 @@ local function config_telescope()
     nmap('<leader>?', 'oldfiles', '[?] Find recently opened files')
     nmap('<leader><space>', "buffers", '[ ] Find buffers')
     nmap('<leader>ff', 'find_files', '[F]ind [F]iles')
+    nmap('<leader>fF', 'git_files', '[F]ind [F]iles (repo)')
     nmap('<leader>fh', 'help_tags', '[F]ind [H]elp')
 
     -- grep
