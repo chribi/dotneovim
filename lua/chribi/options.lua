@@ -33,7 +33,9 @@ vim.o.completeopt = 'menuone,noselect'
 
 vim.o.shell = 'cmd'
 vim.o.fileformats = 'unix,dos'
-vim.o.shellslash = true
+if vim.fn.has('win32') then
+    vim.cmd('set shellslash')
+end
 vim.o.title = true
 
 vim.opt.listchars = {
