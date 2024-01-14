@@ -11,11 +11,11 @@ local function config_telescope()
             mappings = {
                 n = {
                     ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
-                    ["<c-t>"] = require("trouble.providers.telescope").open_with_trouble,
+                    ["<c-i>"] = require("trouble.providers.telescope").open_with_trouble,
                 },
                 i = {
                     ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
-                    ["<c-t>"] = require("trouble.providers.telescope").open_with_trouble,
+                    ["<c-i>"] = require("trouble.providers.telescope").open_with_trouble,
                 },
             },
         },

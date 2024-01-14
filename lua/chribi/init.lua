@@ -1,4 +1,5 @@
 require('chribi.options')
+require('chribi.commands')
 require('chribi.ufo')
 require('chribi.colors')
 require('chribi.keymap')
