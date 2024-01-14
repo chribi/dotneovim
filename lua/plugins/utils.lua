@@ -19,7 +19,21 @@ return {
     -- keymap hints
     {
         'folke/which-key.nvim',
-        opts = { },
+        opts = {
+            defaults = {
+                ['<leader>f'] = { name = "+find" },
+                ['<leader>d'] = { name = "+diagnostics" },
+                ['<leader>g'] = { name = "+git" },
+                ['<leader>h'] = { name = "+harpoon" },
+                ['<leader>n'] = { name = "+neotree" },
+                ['<leader>o'] = { name = "+options" },
+                ['<leader>w'] = { name = "+LSP wordspace" },
+            },
+        },
+        config = function(_, opts)
+            require('which-key').setup(opts)
+            require('which-key').register(opts.defaults)
+        end,
     },
 
     {

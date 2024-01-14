@@ -59,6 +59,8 @@ local function config_telescope()
     nmap('<leader>/', 'current_buffer_fuzzy_find', '[/] fuzzy search')
 
     nmap('<leader>gb', 'git_branches',  '[G]it [B]ranches')
+    nmap('<leader>gl', 'git_commits',  '[G]it [L]og')
+    nmap('<leader>gfl', 'git_bcommits',  '[G]it [F]ile [L]og')
 end
 
 local function nmap(lhs, telescope_cmd, desc)
