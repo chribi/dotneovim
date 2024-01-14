@@ -39,5 +39,9 @@ vim.keymap.set('n', '<leader>dd', '<cmd>Trouble document_diagnostics<cr>', { des
 vim.keymap.set('n', '<leader>da', '<cmd>Trouble document_diagnostics<cr>', { desc = '[D]iagnostic error list ([A]ll)' })
 vim.keymap.set('n', '<leader>df', function() require('telescope.builtin').diagnostics() end, { desc = '[D]iagnostic [F]ind' })
 
+-- git
+vim.keymap.set('n', '<leader>gL', '<cmd>DiffviewFileHistory<cr>', { desc = '[G]it [L]og (Diffview)'})
+vim.keymap.set('n', '<leader>gfL', '<cmd>DiffviewFileHistory %<cr>', { desc = '[G]it [F]ile [L]og (Diffview)'})
+
 -- snipsnipsnip
 vim.keymap.set('n', '<leader>sne', require('luasnip.loaders').edit_snippet_files, { desc = "edit snippets" })
