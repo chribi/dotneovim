@@ -12,6 +12,8 @@ local function adjust_colors_solarized()
     vim.api.nvim_set_hl(0, 'DiffviewDiffDelete', { bg = "none", fg = colors.red })
     vim.api.nvim_set_hl(0, 'DiffAdd', { bg = '#CDD998' })
     vim.api.nvim_set_hl(0, 'DiffChange', { bg = '#FFE8BE' })
+
+    vim.api.nvim_set_hl(0, 'Folded', { bg = '#B6D3DE', italic = true })
 end
 
 adjust_colors_solarized()
