@@ -74,6 +74,7 @@ local function config_completion()
             { name = 'nvim_lua' },
             { name = 'nvim_lsp' },
             { name = 'path' },
+            { name = 'mkdnflow' },
         },
         formatting = {
             format = require('lspkind').cmp_format {
@@ -83,6 +84,7 @@ local function config_completion()
                     nvim_lua = '[lua]',
                     nvim_lsp = '[lsp]',
                     path = '[pth]',
+                    mkdnflow = '[wki]',
                 },
             },
         },
