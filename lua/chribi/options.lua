@@ -14,7 +14,7 @@ vim.keymap.set('n', '<leader>or', '<cmd>set invrelativenumber<cr>',
     { desc = 'Toggle [r]elativenumber', silent = true })
 
 vim.wo.linebreak = true
-vim.keymap.set('n', '<leader>or', '<cmd>set invlinebreak<cr>',
+vim.keymap.set('n', '<leader>ol', '<cmd>set invlinebreak<cr>',
     { desc = 'Toggle [l]inebreak', silent = true })
 
 vim.o.colorcolumn = '131'
@@ -33,9 +33,9 @@ vim.o.completeopt = 'menuone,noselect'
 
 vim.o.shell = 'cmd'
 vim.o.fileformats = 'unix,dos'
-if vim.fn.has('win32') then
-    vim.cmd('set shellslash')
-end
+-- if vim.fn.has('win32') then
+--     vim.cmd('set shellslash')
+-- end
 vim.o.title = true
 
 vim.opt.listchars = {

@@ -11,11 +11,11 @@ local function config_telescope()
             mappings = {
                 n = {
                     ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
-                    ["<c-i>"] = require("trouble.providers.telescope").open_with_trouble,
+                    ["<M-t>"] = require("trouble.providers.telescope").open_with_trouble,
                 },
                 i = {
                     ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
-                    ["<c-i>"] = require("trouble.providers.telescope").open_with_trouble,
+                    ["<M-t>"] = require("trouble.providers.telescope").open_with_trouble,
                 },
             },
         },
@@ -43,24 +43,24 @@ local function config_telescope()
             },
         }
     }
-    local function nmap(lhs, builtin, desc)
-        vim.keymap.set('n', lhs, function() require('telescope.builtin')[builtin]() end, { desc = desc })
+    local function nmap(lhs, builtin, opts, desc)
+        vim.keymap.set('n', lhs, function() require('telescope.builtin')[builtin](opts) end, { desc = desc })
     end
 
     -- files/buffers
-    nmap('<leader>?', 'oldfiles', '[?] Find recently opened files')
-    nmap('<leader><space>', "buffers", '[ ] Find buffers')
-    nmap('<leader>ff', 'find_files', '[F]ind [F]iles')
-    nmap('<leader>fF', 'git_files', '[F]ind [F]iles (repo)')
-    nmap('<leader>fh', 'help_tags', '[F]ind [H]elp')
+    nmap('<leader>?', 'oldfiles', { cwd_only = true }, '[?] Find recently opened files')
+    nmap('<leader><space>', "buffers", {}, '[ ] Find buffers')
+    nmap('<leader>ff', 'find_files', {}, '[F]ind [F]iles')
+    nmap('<leader>fF', 'git_files', {}, '[F]ind [F]iles (repo)')
+    nmap('<leader>fh', 'help_tags', {}, '[F]ind [H]elp')
 
     -- grep
     -- nmap('<leader>fw', 'grep_string', '[F]ind [W]ord') => moved to live grep args
-    nmap('<leader>/', 'current_buffer_fuzzy_find', '[/] fuzzy search')
+    nmap('<leader>/', 'current_buffer_fuzzy_find', {}, '[/] fuzzy search')
 
-    nmap('<leader>gb', 'git_branches',  '[G]it [B]ranches')
-    nmap('<leader>gl', 'git_commits',  '[G]it [L]og')
-    nmap('<leader>gfl', 'git_bcommits',  '[G]it [F]ile [L]og')
+    nmap('<leader>gb', 'git_branches',  {}, '[G]it [B]ranches')
+    nmap('<leader>gl', 'git_commits', {}, '[G]it [L]og')
+    nmap('<leader>gfl', 'git_bcommits', {}, '[G]it [F]ile [L]og')
 end
 
 local function nmap(lhs, telescope_cmd, desc)
