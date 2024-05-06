@@ -45,3 +45,8 @@ vim.keymap.set('n', '<leader>gfL', '<cmd>DiffviewFileHistory %<cr>', { desc = '[
 
 -- snipsnipsnip
 vim.keymap.set('n', '<leader>sne', require('luasnip.loaders').edit_snippet_files, { desc = "edit snippets" })
+
+-- wiki stuff
+vim.keymap.set('n', '<leader>fn',
+  function() require("chribi.wiki").find_wiki() end,
+  { desc = "[F]ind wiki [n]ote" })

@@ -31,11 +31,14 @@ vim.o.scrolloff = 3
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
-vim.o.shell = 'cmd'
 vim.o.fileformats = 'unix,dos'
--- if vim.fn.has('win32') then
---     vim.cmd('set shellslash')
--- end
+if vim.fn.has('win32') then
+    vim.opt.shell = 'cmd'
+    -- vim.opt.shell = 'bash'
+    -- vim.opt.shellcmdflag = '-c'
+    -- vim.opt.shellxquote = '""'
+    -- vim.opt.shellslash = true
+end
 vim.o.title = true
 
 vim.opt.listchars = {

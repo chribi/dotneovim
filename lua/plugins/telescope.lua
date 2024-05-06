@@ -6,7 +6,7 @@ local function config_telescope()
             },
             sorting_strategy = 'ascending',
             path_display = {
-                'truncate'
+                shorten = { len = 3, exclude = { 1, 2, -2, -1 } }
             },
             mappings = {
                 n = {
