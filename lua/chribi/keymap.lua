@@ -3,7 +3,7 @@ vim.keymap.set({'n', 'v'}, '<space>', '<nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- Join lines without changing cursor pos
-vim.keymap.set('n','J', "mzJ'z");
+vim.keymap.set('n','J', "mzJ`z");
 
 -- indent/outdent in visual mode with </>
 vim.keymap.set('v', '<', '<gv')
