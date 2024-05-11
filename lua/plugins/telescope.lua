@@ -54,6 +54,9 @@ local function config_telescope()
                     }
                 }
             },
+            undo = {
+                use_delta = false,
+            }
         }
     }
 
@@ -61,6 +64,7 @@ local function config_telescope()
     require('telescope').load_extension('file_browser')
     require('telescope').load_extension('repo')
     require('telescope').load_extension('live_grep_args')
+    require('telescope').load_extension('undo')
 
     local builtin = require("telescope.builtin")
     local extensions = require("telescope").extensions;
@@ -96,8 +100,9 @@ local function config_telescope()
 
     nmap('<leader>fp', extensions.repo.list, '[f]ind [p]roject')
 
-    nmap('<leader>fg', extensions.live_grep_args.live_grep_args, '[f]ind with [g]rep')
+    nmap("<leader>fu", extensions.undo.undo, "[f]ind in [u]ndo history")
 
+    nmap('<leader>fg', extensions.live_grep_args.live_grep_args, '[f]ind with [g]rep')
     nmap('<leader>fw',  require("telescope-live-grep-args.shortcuts").grep_word_under_cursor, '[F]ind [w]ord')
     nmap('<leader>fW',
         function()
@@ -120,6 +125,7 @@ return {
             "nvim-telescope/telescope-file-browser.nvim",
             "cljoly/telescope-repo.nvim",
             "nvim-telescope/telescope-live-grep-args.nvim",
+            "debugloop/telescope-undo.nvim",
         },
         config = config_telescope,
     },
