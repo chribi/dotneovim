@@ -15,9 +15,13 @@ local function on_attach(client, bufnr)
     nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
     nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+    nmap('gpd', require('goto-preview').goto_preview_definition, '[G]oto [D]efinition (preview)')
     nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+    nmap('gpr', require('goto-preview').goto_preview_references, '[G]oto [D]efinition (preview)')
     nmap('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+    nmap('gpi', require('goto-preview').goto_preview_implementation, '[G]oto [D]efinition (preview)')
     nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
+    nmap('gpD', require('goto-preview').goto_preview_type_definition, '[G]oto [D]efinition (preview)')
     nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
     nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
@@ -98,10 +102,25 @@ return {
         { 'williamboman/mason.nvim', config = true },
         'williamboman/mason-lspconfig.nvim',
         { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
-        {'folke/neodev.nvim', opts = {} },
+        {'folke/neodev.nvim',
+            opts = {
+                override = function(_, library)
+                    library.enabled = true
+                    library.types = true
+                    library.plugins = true
+                end
+        } },
         'hrsh7th/cmp-nvim-lsp',
         { 'Hoffs/omnisharp-extended-lsp.nvim' },
         { 'Issafalcon/lsp-overloads.nvim' },
+        "nvim-telescope/telescope.nvim",
+        {
+            'rmagatti/goto-preview',
+            opts = {
+                focus_on_open = false,
+                dismiss_on_move = true,
+            }
+        },
     },
     init = config_lsp
 }
