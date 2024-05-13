@@ -26,6 +26,11 @@ vim.keymap.set('n', '<leader>oc', function()
     end
 end, { desc = 'Toggle [c]olorcolumn', silent = true })
 
+
+-- new splits below/right of current window
+vim.o.splitbelow = true
+vim.o.splitright = true
+
 vim.o.scrolloff = 3
 
 -- Set completeopt to have a better completion experience
