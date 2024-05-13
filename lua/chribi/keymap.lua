@@ -24,12 +24,25 @@ vim.keymap.set('n', '<leader>vp', '`[v`]', { desc = '[v]isual select last [p]ast
 vim.keymap.set('n', '[b', '<cmd>bprevious<cr>', { desc = 'Previous [B]uffer', silent = true })
 vim.keymap.set('n', ']b', '<cmd>bnext<cr>', { desc = 'Next [B]uffer', silent = true })
 vim.keymap.set('n', '<leader>qq', '<cmd>b#|bd#<cr>', { desc = 'Close buffer w/o closing window', silent = true })
+vim.keymap.set('n', '<leader>qc', '<cmd>cclose<cr>', { desc = 'Close quickfix window', silent = true })
+vim.keymap.set('n', '<leader>qt', '<cmd>tabclose<cr>', { desc = 'Close tab', silent = true })
 
 -- lists
 vim.keymap.set('n', '[q', '<cmd>cprevious<cr>', { desc = 'Previous [q]uickfix', silent = true })
 vim.keymap.set('n', ']q', '<cmd>cnext<cr>', { desc = 'Next [q]uickfix', silent = true })
 vim.keymap.set('n', '[l', '<cmd>cprevious<cr>', { desc = 'Previous [l]ocation', silent = true })
 vim.keymap.set('n', ']l', '<cmd>cnext<cr>', { desc = 'Next [l]ocation', silent = true })
+
+-- splits
+vim.keymap.set('n', '<M-h>', '<cmd>wincmd h<cr>')
+vim.keymap.set('n', '<M-j>', '<cmd>wincmd j<cr>')
+vim.keymap.set('n', '<M-k>', '<cmd>wincmd k<cr>')
+vim.keymap.set('n', '<M-l>', '<cmd>wincmd l<cr>')
+
+vim.keymap.set('n', '<M-S-h>', '<cmd>vertical resize -1<cr>')
+vim.keymap.set('n', '<M-S-j>', '<cmd>resize -1<cr>')
+vim.keymap.set('n', '<M-S-k>', '<cmd>resize +1 k<cr>')
+vim.keymap.set('n', '<M-S-l>', '<cmd>vertical resize +1<cr>')
 
 -- diagnostics
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous [D]iagnostic' })
