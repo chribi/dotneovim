@@ -47,7 +47,7 @@ end
 vim.o.title = true
 
 vim.opt.listchars = {
-    tab = '>·',
+    tab = '› ',
     trail = '·',
 }
 

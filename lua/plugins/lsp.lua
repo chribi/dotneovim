@@ -13,6 +13,7 @@ local function on_attach(client, bufnr)
 
     nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
     nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+    nmap('<leader>ch', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, '[C]ode inlay [H]ints')
 
     nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
     nmap('gpd', require('goto-preview').goto_preview_definition, '[G]oto [D]efinition (preview)')
@@ -77,6 +78,24 @@ local function config_lsp()
                 handlers = {
                     ['textDocument/definition'] = require('omnisharp_extended').handler,
                 },
+                settings = {
+                    RoslynExtensionsOptions = {
+                        InlayHintsOptions = {
+                            enableForParameters = true,
+                            forLiteralParameters = true,
+                            forIndexerParameters = true,
+                            forObjectCreationParameters = true,
+                            forOtherParameters = true,
+                            suppressForParametersThatDifferOnlyBySuffix = false,
+                            suppressForParametersThatMatchMethodIntent = false,
+                            suppressForParametersThatMatchArgumentName = false,
+                            enableForTypes = true,
+                            forImplicitVariableTypes = true,
+                            forLambdaParameterTypes = true,
+                            forImplicitObjectCreation = true
+                        }
+                    },
+                },
             }
         end,
 
@@ -87,6 +106,55 @@ local function config_lsp()
                 settings = {
                     Lua = {
                         workspace = { checkThirdParty = false },
+                        hint = { enable = true },
+                    },
+                },
+            }
+        end,
+
+        ['gopls'] = function()
+            require('lspconfig').gopls.setup {
+                capabilities = capabilities,
+                on_attach = on_attach,
+                settings = {
+                    gopls = {
+                        hints = {
+                            rangeVariableTypes = true,
+                            parameterNames = true,
+                            constantValues = true,
+                            assignVariableTypes = true,
+                            compositeLiteralFields = true,
+                            compositeLiteralTypes = true,
+                            functionTypeParameters = true,
+                        },
+                    },
+                },
+            }
+        end,
+
+        ['jsonls'] = function()
+            require('lspconfig').jsonls.setup {
+                settings = {
+                    json = {
+                        schemas = require('schemastore').json.schemas(),
+                        validate = { enable = true },
+                    },
+                },
+            }
+        end,
+
+        ['yamlls'] = function()
+            require('lspconfig').yamlls.setup {
+                settings = {
+                    yaml = {
+                        schemaStore = {
+                            -- You must disable built-in schemaStore support if you want to use
+                            -- this plugin and its advanced options like `ignore`.
+                            enable = false,
+                            -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+                            url = "",
+                        },
+                        schemas = require('schemastore').yaml.schemas(),
                     },
                 },
             }
@@ -100,7 +168,21 @@ return {
     dependencies = {
         -- LSP Support
         { 'williamboman/mason.nvim', config = true },
-        'williamboman/mason-lspconfig.nvim',
+        {
+            'williamboman/mason-lspconfig.nvim',
+            opts = {
+                ensure_installed = {
+                    "gopls",
+                    "lua_ls",
+                    "omnisharp",
+                    "powershell_es",
+                    "bashls",
+                    "yamlls",
+                    "jsonls",
+                }
+            },
+        },
+        "b0o/schemastore.nvim",
         { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
         {'folke/neodev.nvim',
             opts = {

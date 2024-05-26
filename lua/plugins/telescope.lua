@@ -79,6 +79,7 @@ local function config_telescope()
     nmap('<leader>ff', builtin.find_files, '[F]ind [F]iles')
     nmap('<leader>fF', builtin.git_files, '[F]ind [F]iles (repo)')
     nmap('<leader>fh', builtin.help_tags, '[F]ind [H]elp')
+    nmap('<leader>fH', builtin.highlights, '[F]ind [H]ighlights')
 
     -- grep
     nmap('<leader>/', builtin.current_buffer_fuzzy_find, '[/] fuzzy search')

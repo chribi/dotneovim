@@ -14,6 +14,9 @@ local function adjust_colors_solarized()
     vim.api.nvim_set_hl(0, 'DiffChange', { bg = '#FFE8BE' })
 
     vim.api.nvim_set_hl(0, 'Folded', { bg = '#B6D3DE', italic = true })
+    vim.api.nvim_set_hl(0, 'DiagnosticInfo', { fg = '#3dcddb' })
+    vim.api.nvim_set_hl(0, 'DiagnosticWarn', { link = 'DiagnosticHint' })
+    vim.api.nvim_set_hl(0, 'LspInlayHint', { italic = true, fg = '#aaaaaa' })
 end
 
 adjust_colors_solarized()
