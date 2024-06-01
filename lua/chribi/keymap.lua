@@ -56,6 +56,8 @@ vim.keymap.set('n', '<leader>df', function() require('telescope.builtin').diagno
 vim.keymap.set('n', '<leader>gL', '<cmd>DiffviewFileHistory<cr>', { desc = '[G]it [L]og (Diffview)'})
 vim.keymap.set('n', '<leader>gfL', '<cmd>DiffviewFileHistory %<cr>', { desc = '[G]it [F]ile [L]og (Diffview)'})
 
+vim.keymap.set('t', '<ESC><ESC>', '<C-\\><C-n>', { noremap = true })
+
 -- snipsnipsnip
 vim.keymap.set('n', '<leader>sne', require('luasnip.loaders').edit_snippet_files, { desc = "edit snippets" })
 

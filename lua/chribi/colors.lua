@@ -19,7 +19,7 @@ local function adjust_colors_solarized()
     vim.api.nvim_set_hl(0, 'LspInlayHint', { italic = true, fg = '#aaaaaa' })
 end
 
-adjust_colors_solarized()
+-- adjust_colors_solarized()
 
 local colors_group = vim.api.nvim_create_augroup('AdjustColors', { clear = true })
 
